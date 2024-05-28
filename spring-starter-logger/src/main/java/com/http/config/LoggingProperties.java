@@ -1,4 +1,4 @@
-package com.task.config;
+package com.http.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -10,4 +10,6 @@ import org.springframework.context.annotation.Configuration;
 public class LoggingProperties {
 
   private Boolean enabled;
+
+  private String level = "INFO";
 }

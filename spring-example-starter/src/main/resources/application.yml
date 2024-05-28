@@ -1,0 +1,13 @@
+spring-starter-logger:
+  enabled: true
+spring:
+  application:
+    name: spring-example-starter
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: dima
+    password: 1607
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
