@@ -17,7 +17,7 @@ public class LoggingRequestImpl implements LoggingRequest {
   public Map<String, String> getRequest(ContentCachingRequestWrapper requestWrapper) {
     Map<String, String> map = new HashMap<>();
     map.put(Type.METHOD.name(), requestWrapper.getMethod());
-    map.put(Type.PARAMETERS.name(), requestWrapper.getQueryString());
+    map.put(Type.PARAMETERS.name(), requestWrapper.getContentAsString());
 
     StringBuilder headers = new StringBuilder();
     requestWrapper.getHeaderNames().asIterator().forEachRemaining(headerName ->

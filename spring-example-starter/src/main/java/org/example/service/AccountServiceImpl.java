@@ -1,45 +1,40 @@
 package org.example.service;
 
 import java.util.List;
-import org.example.dto.AccountDTO;
-import org.example.mapper.AccountMappers;
 import org.example.model.Account;
 import org.example.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AccountServiceImpl implements AccountService {
 
   private final AccountRepository accountRepository;
-  private final AccountMappers accountMappers;
 
   @Autowired
-  public AccountServiceImpl(AccountRepository accountRepository, AccountMappers accountMappers) {
+  public AccountServiceImpl(AccountRepository accountRepository) {
     this.accountRepository = accountRepository;
-    this.accountMappers = accountMappers;
   }
 
   @Override
-  public AccountDTO saveAccount(AccountDTO accountDTO) {
-    Account account = accountMappers.toModel(accountDTO);
+  public Account saveAccount(Account account) {
     accountRepository.save(account);
-    return accountMappers.toDTO(account);
+    return account;
   }
 
   @Override
-  public List<AccountDTO> findAllAccount() {
-    List<Account> accounts = accountRepository.findAll();
-    List<AccountDTO> accountDTO = accountMappers.toDTOList(accounts);
-    return accountDTO;
+  public List<Account> findAllAccount() {
+    return accountRepository.findAll();
   }
 
 
   @Override
-  public AccountDTO deleteAccount(AccountDTO accountDTO) {
-    return null;
+  public void deleteAccount(Account account) {
+    accountRepository.delete(account);
   }
 
   @Override
-  public AccountDTO findByIdAccount(Long id) {
-    return null;
+  public Account findByIdAccount(Long id) {
+    return accountRepository.findById(id).get();
   }
 }

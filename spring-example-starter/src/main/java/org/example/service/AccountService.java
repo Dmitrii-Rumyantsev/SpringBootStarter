@@ -1,17 +1,16 @@
 package org.example.service;
 
 import java.util.List;
-import org.example.dto.AccountDTO;
-import org.springframework.stereotype.Service;
+import org.example.model.Account;
 
-@Service
 public interface AccountService {
-  AccountDTO saveAccount(AccountDTO accountDTO);
 
-  List<AccountDTO> findAllAccount();
+  Account saveAccount(Account accountDTO);
 
-  AccountDTO deleteAccount(AccountDTO accountDTO);
+  List<Account> findAllAccount();
 
-  AccountDTO findByIdAccount(Long id);
+  void deleteAccount(Account accountDTO);
+
+  Account findByIdAccount(Long id);
 
 }
